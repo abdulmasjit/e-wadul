@@ -1,0 +1,14 @@
+[
+  {
+    "title": "User",
+    "routeName": "e-wadol-user"
+  },
+  {
+    "title": "Jenis Pengaduan",
+    "routeName": "e-wadol-jenis-pengaduan"
+  },
+  {
+    "title": "Pengaduan",
+    "routeName": "e-wadol-pengaduan"
+  }
+]

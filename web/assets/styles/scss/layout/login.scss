@@ -1,0 +1,21 @@
+@import '../variable.scss';
+
+.login-page {
+  display: flex;
+  min-height: 100vh;
+  background: $color-background;
+  .content {
+    margin: auto;
+    .card {
+      background: $grey;
+      width: 70%;
+      // margin: auto;
+      margin-left: auto;
+      margin-right: auto;
+      // top: 50%;
+      border-radius: 2rem;
+      align-items: stretch;
+      padding: 2rem;
+    }
+  }
+}

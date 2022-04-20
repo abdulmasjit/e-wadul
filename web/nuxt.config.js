@@ -1,9 +1,10 @@
 export default {
   // Mode configuration : https://nuxtjs.org/docs/configuration-glossary/configuration-mode
-  mode: 'spa',
+  // mode: 'spa',
+  ssr: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'e-wadul-frontend',
+    title: 'E - Wadul',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -16,11 +17,15 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '~/assets/styles/css/tailwind/tailwind.css',
-    '~/assets/styles/scss/main.scss'
+    '~/assets/styles/scss/main.scss',
+    // '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    '~/plugins/vee-validate.ts',
+    // '~/plugins/fontawesome.js',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -28,8 +33,18 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build', '@nuxt/postcss8',
+    '@nuxt/typescript-build',
+    '@nuxt/postcss8',
+    '@nuxtjs/fontawesome'
   ],
+
+  fontawesome: {
+    // components: 'fa',
+    icons: {
+      solid: true,
+      // brand: true,
+    }
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -42,6 +57,18 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
   ],
+
+  chakra: {
+    extendTheme: {
+      colors: {
+        brand: { /* ... */ }
+      }
+    }
+  },
+
+  purgeCSS: {
+    whitelistPatterns: [/svg.*/, /fa.*/]
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -58,11 +85,14 @@ export default {
 
   // Base router configuration: https://nuxtjs.org/docs/configuration-glossary/configuration-router/
   router: {
-    base: '/'
+    base: '/',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    transpile: [
+      'vee-validate/dist/rules'
+    ],
     postcss: {
       plugins: {
         tailwindcss: {},

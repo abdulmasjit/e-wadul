@@ -16,7 +16,8 @@
 .layout-main {
   margin-left: 0;
   padding: 5.8rem 1.1rem 1.1rem 1.1rem;
-  min-height: calc(100vh - 5.8rem - 1.1rem);
+  min-height: 100vh;
+  // min-height: calc(100vh - 5.8rem - 1.1rem);
 }
 
 .layout-main.active {
@@ -55,10 +56,6 @@
   .logo-header {
     height: 60px;
     object-fit: cover;
-  }
-
-  .btn-upload-excel {
-    display: none;
   }
 
   .btn-event-panel {
@@ -104,6 +101,38 @@
   SETTING LEFT PANEL
 ===============================*/
 
+.css-19oe1nf-className {
+  background: none !important;
+}
+
+.css-1rbr9xh-className {
+  width: $width-leftmenu;
+  background: $green-primary;
+}
+
+.body-left-panel {
+  margin-top: $height-topbar + 20px;
+}
+
+.left-panel-content {
+  .container-title {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    // justify-content: center;
+    .title {
+      margin-left: 1rem;
+      margin-right: 1rem;
+      color: $white;
+      font-weight: 600;
+    }
+  }
+  .container-title:hover, .container-title.active{
+    background: $green-tertiary;
+  }
+  // .title:hover
+}
+
 .left-panel::-webkit-scrollbar {
   width: 3px;
 }
@@ -122,6 +151,10 @@
 
 .left-panel::-webkit-scrollbar-thumb:hover {
   background: $grey;
+}
+
+.layout-main.active {
+  margin-left: $width-leftmenu;
 }
 
 /* =================================================================
