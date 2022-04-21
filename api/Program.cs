@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using sekolah.Data;
+using Ewadul.Api.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +10,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<sekolahContext>(
+builder.Services.AddDbContext<DataContext>(
     options =>
     {
-        options.UseMySql(builder.Configuration.GetConnectionString("sekolah"),
+        options.UseMySql(builder.Configuration.GetConnectionString("DBConnection"),
         Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.23-mysql"));
     });
 
@@ -26,7 +26,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using sekolah.Models;
+using Ewadul.Api.Models;
 
-namespace sekolah.Data
+namespace Ewadul.Api.Data
 {
-    public partial class sekolahContext : DbContext
+    public partial class DataContext : DbContext
     {
-        public sekolahContext()
+        public DataContext()
         {
         }
 
-        public sekolahContext(DbContextOptions<sekolahContext> options)
+        public DataContext(DbContextOptions<DataContext> options)
             : base(options)
         {
         }

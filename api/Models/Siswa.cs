@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
-namespace sekolah.Models
+namespace Ewadul.Api.Models
 {
     public partial class Siswa
     {

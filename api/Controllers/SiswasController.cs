@@ -6,18 +6,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using sekolah.Data;
-using sekolah.Models;
-
-namespace WebApplication1.Controllers
+using Ewadul.Api.Data;
+using Ewadul.Api.Models;
+namespace Ewadul.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class SiswasController : ControllerBase
     {
-        private readonly sekolahContext _context;
+        private readonly DataContext _context;
 
-        public SiswasController(sekolahContext context)
+        public SiswasController(DataContext context)
         {
             _context = context;
         }
