@@ -46,7 +46,7 @@ namespace Ewadul.Api.Controllers
 
         // POST: api/v1/jenis-pengaduan
         [HttpPost]
-        public async Task<ActionResult<JenisPengaduan>> PostJenisPengaduan(RequestJenisPengaduan req)
+        public async Task<ActionResult<JenisPengaduan>> CreateJenisPengaduan(RequestJenisPengaduan req)
         {
             var jenisPengaduan = new JenisPengaduan(){
                 Nama = req.Nama,
@@ -56,60 +56,60 @@ namespace Ewadul.Api.Controllers
             _context.JenisPengaduan.Add(jenisPengaduan);
             await _context.SaveChangesAsync();
 
-            return jenisPengaduan;
-            // return CreatedAtAction("GetJenisPengaduan", new { id = jenisPengaduan.Id }, jenisPengaduan);
+            return CreatedAtAction("GetById", new { id = jenisPengaduan.Id }, jenisPengaduan);
         }
 
-        // PUT: api/Siswas/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        // [HttpPut("{id}")]
-        // public async Task<IActionResult> PutSiswa(int id, Siswa siswa)
-        // {
-        //     if (id != siswa.Id)
-        //     {
-        //         return BadRequest();
-        //     }
+        // PUT: api/v1/jenis-pengaduan/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateJenisPengaduan(int id,  RequestJenisPengaduan req)
+        {
+            var jenisPengaduan = await _context.JenisPengaduan.FindAsync(id);
+            if (jenisPengaduan == null)
+            {
+                return NotFound();
+            }
+            
+            // Binding data
+            jenisPengaduan.Nama = req.Nama;
 
-        //     _context.Entry(siswa).State = EntityState.Modified;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!JenisPengaduanExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-        //     try
-        //     {
-        //         await _context.SaveChangesAsync();
-        //     }
-        //     catch (DbUpdateConcurrencyException)
-        //     {
-        //         if (!SiswaExists(id))
-        //         {
-        //             return NotFound();
-        //         }
-        //         else
-        //         {
-        //             throw;
-        //         }
-        //     }
+            return NoContent();
+        }
 
-        //     return NoContent();
-        // }
+        // DELETE: api/v1/jenis-pengaduan/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteJenisPengaduan(int id)
+        {
+            var jenisPengaduan = await _context.JenisPengaduan.FindAsync(id);
+            if (jenisPengaduan == null)
+            {
+                return NotFound();
+            }
 
-        // // DELETE: api/Siswas/5
-        // [HttpDelete("{id}")]
-        // public async Task<IActionResult> DeleteSiswa(int id)
-        // {
-        //     var siswa = await _context.Siswas.FindAsync(id);
-        //     if (siswa == null)
-        //     {
-        //         return NotFound();
-        //     }
+            _context.JenisPengaduan.Remove(jenisPengaduan);
+            await _context.SaveChangesAsync();
 
-        //     _context.Siswas.Remove(siswa);
-        //     await _context.SaveChangesAsync();
+            return NoContent();
+        }
 
-        //     return NoContent();
-        // }
-
-        // private bool SiswaExists(int id)
-        // {
-        //     return _context.Siswas.Any(e => e.Id == id);
-        // }
+        private bool JenisPengaduanExists(int id)
+        {
+            return _context.JenisPengaduan.Any(e => e.Id == id);
+        }
     }
 }
