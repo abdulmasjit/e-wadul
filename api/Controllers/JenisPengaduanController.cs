@@ -27,14 +27,14 @@ namespace Ewadul.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<JenisPengaduan>>> GetAll()
         {
-            return await _context.JenisPengaduan.ToListAsync();
+            return await _context.JenisPengaduans.ToListAsync();
         }
 
         // GET: api/v1/jenis-pengaduan/5
         [HttpGet("{id}")]
         public async Task<ActionResult<JenisPengaduan>> GetById(int id)
         {
-            var jenisPengaduan = await _context.JenisPengaduan.FindAsync(id);
+            var jenisPengaduan = await _context.JenisPengaduans.FindAsync(id);
 
             if (jenisPengaduan == null)
             {
@@ -53,7 +53,7 @@ namespace Ewadul.Api.Controllers
                 Status = 1 // active
             };
 
-            _context.JenisPengaduan.Add(jenisPengaduan);
+            _context.JenisPengaduans.Add(jenisPengaduan);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetById", new { id = jenisPengaduan.Id }, jenisPengaduan);
@@ -63,7 +63,7 @@ namespace Ewadul.Api.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateJenisPengaduan(int id,  RequestJenisPengaduan req)
         {
-            var jenisPengaduan = await _context.JenisPengaduan.FindAsync(id);
+            var jenisPengaduan = await _context.JenisPengaduans.FindAsync(id);
             if (jenisPengaduan == null)
             {
                 return NotFound();
@@ -95,13 +95,13 @@ namespace Ewadul.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteJenisPengaduan(int id)
         {
-            var jenisPengaduan = await _context.JenisPengaduan.FindAsync(id);
+            var jenisPengaduan = await _context.JenisPengaduans.FindAsync(id);
             if (jenisPengaduan == null)
             {
                 return NotFound();
             }
 
-            _context.JenisPengaduan.Remove(jenisPengaduan);
+            _context.JenisPengaduans.Remove(jenisPengaduan);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -109,7 +109,7 @@ namespace Ewadul.Api.Controllers
 
         private bool JenisPengaduanExists(int id)
         {
-            return _context.JenisPengaduan.Any(e => e.Id == id);
+            return _context.JenisPengaduans.Any(e => e.Id == id);
         }
     }
 }
