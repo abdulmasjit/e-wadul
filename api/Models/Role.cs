@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+
 namespace Ewadul.Api.Models
 {
-    public partial class JenisPengaduan : BaseEntity
+    public partial class Role
     {
-        public int Id { get; set; }
+        public string Id { get; set; } = null!;
         public string Nama { get; set; } = null!;
-        public sbyte Status { get; set; }
     }
 }
