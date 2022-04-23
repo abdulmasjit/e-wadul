@@ -13,7 +13,7 @@ namespace Ewadul.Api.Models
         public string? Nik { get; set; }
         public string? Telepon { get; set; }
         public string? Alamat { get; set; }
-        public string? Status { get; set; }
+        public sbyte? Status { get; set; }
         public string? IdRole { get; set; }
     
         [JsonIgnore]

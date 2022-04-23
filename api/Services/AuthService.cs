@@ -1,6 +1,8 @@
 #nullable disable
 namespace Ewadul.Api.Services;
-
+using System.Linq;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -9,6 +11,7 @@ using System.Text;
 using Ewadul.Api.Helpers;
 using Ewadul.Api.Models;
 using Ewadul.Api.DTO;
+using Ewadul.Api.Data;
 public interface IAuthService
 {
     AuthenticateResponse Authenticate(AuthenticateRequest model);
@@ -25,16 +28,19 @@ public class AuthService : IAuthService
     };
 
     private readonly AppSettings _appSettings;
+    private readonly DataContext _context;
 
-    public AuthService(IOptions<AppSettings> appSettings)
+    public AuthService(IOptions<AppSettings> appSettings, DataContext context)
     {
         _appSettings = appSettings.Value;
+        _context = context;
     }
 
     public AuthenticateResponse Authenticate(AuthenticateRequest model)
-    {
-        var user = _users.SingleOrDefault(x => x.Username == model.Username && x.Password == model.Password);
-
+    {   
+        string md5StringPassword = AppHelper.GetMd5Hash(model.Password);
+        Console.WriteLine(md5StringPassword);
+        var user = _context.Users.SingleOrDefault(user => (user.Email == model.Username || user.Username == model.Username) && user.Password == md5StringPassword);
         // return null if user not found
         if (user == null) return null;
 
@@ -55,7 +61,6 @@ public class AuthService : IAuthService
     }
 
     // helper methods
-
     private string generateJwtToken(User user)
     {
         // generate token that is valid for 7 days
