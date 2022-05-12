@@ -528,3 +528,4 @@ C:/Project/WebApplication1/bin/Debug/net6.0/runtimes/win/lib/netcoreapp3.0/Syste
 /home/masjit/development/dotnet/e-wadul/api/obj/Debug/net6.0/WebApplication1.pdb
 /home/masjit/development/dotnet/e-wadul/api/obj/Debug/net6.0/WebApplication1.genruntimeconfig.cache
 /home/masjit/development/dotnet/e-wadul/api/obj/Debug/net6.0/ref/WebApplication1.dll
+/home/masjit/development/dotnet/e-wadul/api/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll

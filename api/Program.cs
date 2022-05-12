@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Ewadul.Api.Data;
+using Ewadul.Api.Helpers;
+using Ewadul.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,12 @@ builder.Services.AddDbContext<DataContext>(
         Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.23-mysql"));
     });
 
+// configure strongly typed settings object
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+
+// configure DI for application services
+builder.Services.AddScoped<IAuthService, AuthService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,6 +37,9 @@ if (app.Environment.IsDevelopment())
 // app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+// Middleware
+app.UseMiddleware<JwtMiddleware>();
 
 app.MapControllers();
 
