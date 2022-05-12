@@ -1,0 +1,192 @@
+@import '../variable.scss';
+
+/* =================================================================
+  SETTING MAIN LAYOUTS
+===============================*/
+
+.layout-main {
+  background: $color-background;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.layout-main {
+  margin-left: 0;
+  padding: 5.8rem 1.1rem 1.1rem 1.1rem;
+  min-height: 100vh;
+  // min-height: calc(100vh - 5.8rem - 1.1rem);
+}
+
+.layout-main.active {
+  margin-left: $width-leftmenu;
+}
+
+.layout-wrapper {
+  min-height: 100vh;
+}
+
+/* =================================================================
+  SETTING MAIN LAYOUTS
+===============================*/
+
+/* =================================================================
+  SETTING TOPBAR
+===============================*/
+.layout-topbar.active {
+  left: $width-leftmenu;
+}
+
+.layout-topbar {
+  position: fixed;
+  height: 4.6rem;
+  padding: 0.8rem 1.3rem 0.8rem 1.3rem;
+  z-index: 1;
+  right: 0;
+  left: 0px;
+  background: white;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.12);
+  transition: all 0.5s ease;
+  .con-layout-topbar {
+    justify-content: space-between;
+  }
+
+  .logo-header {
+    height: 60px;
+    object-fit: cover;
+  }
+
+  .btn-event-panel {
+    // background: $color-blue-grey-lighten-4 !important;
+    border: none !important;
+    padding: 0.5em;
+    border-radius: 0.75rem;
+  }
+
+  .content-header {
+    // border-left: 2px solid $color-blue-grey-lighten-4;
+    // border-right: 2px solid $color-blue-grey-lighten-4;
+    margin: 0 1.3rem;
+    padding: 0 1.3rem;
+    transition: all 0.5s ease;
+  }
+
+  .icon-header svg {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  // .right-header {
+  //   .name-profile {
+  //     font-size: $subtitle1;
+  //     font-weight: 400;
+  //     color: $color-black;
+  //   }
+
+  //   .role-profile {
+  //     font-size: $subtitle2;
+  //     font-weight: 600;
+  //     color: $color-blue-grey-lighten-1;
+  //   }
+  // }
+}
+
+/* =================================================================
+  END SETTING TOPBAR
+===============================*/
+
+/* =================================================================
+  SETTING LEFT PANEL
+===============================*/
+
+.css-19oe1nf-className {
+  background: none !important;
+}
+
+.css-1rbr9xh-className {
+  width: $width-leftmenu;
+  background: $green-primary;
+}
+
+.body-left-panel {
+  margin-top: $height-topbar + 20px;
+}
+
+.left-panel-content {
+  .container-title {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    // justify-content: center;
+    .title {
+      margin-left: 1rem;
+      margin-right: 1rem;
+      color: $white;
+      font-weight: 600;
+    }
+  }
+  .container-title:hover, .container-title.active{
+    background: $green-tertiary;
+  }
+  // .title:hover
+}
+
+.left-panel::-webkit-scrollbar {
+  width: 3px;
+}
+
+.left-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.left-panel::-webkit-scrollbar-thumb {
+  background: $grey-light;
+  border-radius: 6px;
+  transition: background-color 0.2s linear, height 0.2s linear,
+    width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+  width: 6px;
+}
+
+.left-panel::-webkit-scrollbar-thumb:hover {
+  background: $grey;
+}
+
+.layout-main.active {
+  margin-left: $width-leftmenu;
+}
+
+/* =================================================================
+  END SETTING LEFT PANEL
+===============================*/
+
+@media screen and (max-width: 1023px) {
+  html {
+    font-size: 18px;
+  }
+  .layout-main {
+    margin-left: 0;
+  }
+
+  .layout-main.active {
+    margin-left: 0;
+  }
+
+  .left-panel {
+    // width: 0;
+    position: fixed;
+    width: 300px;
+  }
+
+  .layout-topbar.active {
+    left: 0;
+  }
+}
+
+//mobile
+@media screen and (max-width: 768px) {
+  .left-panel {
+    width: 100%;
+  }
+}

@@ -1,0 +1,14 @@
+@import 'variable';
+
+.color-primary {
+  color: $primary;
+}
+
+.text-body2 {
+  font-size: $body2;
+}
+
+.text-error {
+  font-size: 0.75rem;
+  color: $danger;
+}
