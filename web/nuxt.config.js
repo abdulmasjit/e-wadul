@@ -1,7 +1,14 @@
+import customTheme from './custom-theme'
+
 export default {
   // Mode configuration : https://nuxtjs.org/docs/configuration-glossary/configuration-mode
-  // mode: 'spa',
   ssr: false,
+
+  // https://nuxtjs.org/docs/configuration-glossary/configuration-env/
+  env: {
+    apiUrl: process.env.API_URL || 'http://localhost:5000/swagger/v1/'
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'E - Wadul',
@@ -59,11 +66,7 @@ export default {
   ],
 
   chakra: {
-    extendTheme: {
-      colors: {
-        brand: { /* ... */ }
-      }
-    }
+    extendTheme: customTheme
   },
 
   purgeCSS: {

@@ -1,15 +1,20 @@
 <template>
-
+  <div></div>
 </template>
 
 <script>
 export default {
   middleware({
     store,
-    redirect
+    redirect,
+    route
   }) {
-    // If the user is not authenticated
-    return redirect('/login')
+    // console.log('ini route', route)
+    if (route.name === 'index') {
+      redirect({
+        name: 'login'
+      })
+    }
   }
 }
 </script>
