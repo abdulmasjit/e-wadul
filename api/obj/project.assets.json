@@ -9764,24 +9764,26 @@
     ]
   },
   "packageFolders": {
-    "/home/masjit/.nuget/packages/": {}
+    "C:\\Users\\Bariq Qushoyyi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/masjit/development/dotnet/e-wadul/api/WebApplication1.csproj",
+      "projectUniqueName": "C:\\Project\\e-wadul\\api\\WebApplication1.csproj",
       "projectName": "WebApplication1",
-      "projectPath": "/home/masjit/development/dotnet/e-wadul/api/WebApplication1.csproj",
-      "packagesPath": "/home/masjit/.nuget/packages/",
-      "outputPath": "/home/masjit/development/dotnet/e-wadul/api/obj/",
+      "projectPath": "C:\\Project\\e-wadul\\api\\WebApplication1.csproj",
+      "packagesPath": "C:\\Users\\Bariq Qushoyyi\\.nuget\\packages\\",
+      "outputPath": "C:\\Project\\e-wadul\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/masjit/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Bariq Qushoyyi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -9855,7 +9857,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/snap/dotnet-sdk/162/sdk/6.0.202/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

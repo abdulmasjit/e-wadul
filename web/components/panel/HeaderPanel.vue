@@ -1,9 +1,8 @@
 <template>
   <header class="layout-topbar">
     <div class="flex items-center con-layout-topbar">
-      <div class="flex gap-2 items-center">
-        <img src="~/assets/images/logo/e-wadul-icon.png" class="logo-header" />
-        <p class="text-2xl color-primary">E - Wadul</p>
+      <div class="flex items-center">
+        <img src="~/assets/images/logo/icon-text-ewadul.png" class="logo-header" />
       </div>
     </div>
   </header>

@@ -20,21 +20,17 @@ const mutations = {
   SET_NO_INTERNET_MODAL: (state: any, noInternet: boolean) => {
     state.network.noInternetModal = noInternet
   },
-  SET_TOKEN: (state: any, {
-    accessToken,
-    tokenType
-  }: any) => {
-    state.authenticated.accessToken = accessToken
-    state.authenticated.tokenType = tokenType
-  },
   SET_DATE_AUTHEN: (state: any, dateLogin: any) => {
     state.authenticated.dateLogin = dateLogin
   },
-  SET_IS_AUTHEN: (state: any, isAuthen: any) => {
-    state.authenticated.isAuthen = isAuthen
+  SET_IS_AUTHEN: (state: any, isAuth: any) => {
+    state.authenticated.isAuth = isAuth
   },
   SET_SHOW_LOADING: (state: any, isLoad: boolean) => {
     state.showLoading = isLoad
+  },
+  SET_APP_ACTIVEUSER: (state: any, data: any) => {
+    state.appActiveUser = data
   }
 }
 

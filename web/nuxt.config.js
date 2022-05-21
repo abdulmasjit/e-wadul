@@ -6,7 +6,7 @@ export default {
 
   // https://nuxtjs.org/docs/configuration-glossary/configuration-env/
   env: {
-    apiUrl: process.env.API_URL || 'http://localhost:5000/swagger/v1/'
+    apiUrl: process.env.API_URL || 'http://localhost:5000/api/v1/'
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -31,6 +31,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/vee-validate.ts',
+    '~/plugins/chakra-ui.ts'
     // '~/plugins/fontawesome.js',
   ],
 
@@ -65,9 +66,9 @@ export default {
     '@nuxtjs/pwa',
   ],
 
-  chakra: {
-    extendTheme: customTheme
-  },
+  // chakra: {
+  //   extendTheme: customTheme
+  // },
 
   purgeCSS: {
     whitelistPatterns: [/svg.*/, /fa.*/]

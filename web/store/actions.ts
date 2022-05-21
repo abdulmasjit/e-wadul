@@ -35,29 +35,25 @@ const actions = {
       commit('SET_SHOW_LOADING', false)
     }
   },
-  setToken: ({ commit }: any, {
-    tokenType,
-    accessToken
-  }: any) => {
-    commit('SET_TOKEN', { tokenType, accessToken })
-  },
-  setIsAuthen: ({ commit }: any, isAuthen: any) => {
-    console.log('nyampe auth', isAuthen)
-    commit('SET_IS_AUTHEN', isAuthen)
+  setIsAuth: ({ commit }: any, isAuth: any) => {
+    commit('SET_IS_AUTHEN', isAuth)
   },
   setDateAuth: ({ commit }: any, dateAuth: any) => {
     commit('SET_DATE_AUTHEN', dateAuth)
   },
   logoutAccount: ({ commit }: any) => {
     commit('SET_DATE_AUTHEN', null)
+    commit('SET_APP_ACTIVEUSER', null)
     commit('SET_IS_AUTHEN', null)
-    commit('SET_TOKEN', { tokenType: null, accessToken: null })
   },
   showLoading: ({ commit }: any) => {
     commit('SET_SHOW_LOADING', true)
   },
   hideLoading: ({ commit }: any) => {
     commit('SET_SHOW_LOADING', false)
+  },
+  setAppActiveUser: ({ commit }: any, data: any) => {
+    commit('SET_APP_ACTIVEUSER', data)
   }
 }
 

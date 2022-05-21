@@ -11,16 +11,13 @@
 </template>
 
 <script>
-import {
-  CThemeProvider
-} from '@chakra-ui/vue'
 import HeaderPanel from '~/components/panel/HeaderPanel.vue'
 import LeftPanel from '~/components/panel/LeftPanel.vue'
 export default {
   name: 'HomeLayout',
+  middleware: ['auth-admin'],
   components: {
     HeaderPanel,
-    CThemeProvider,
     LeftPanel
   }
 }

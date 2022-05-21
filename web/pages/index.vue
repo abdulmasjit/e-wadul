@@ -1,9 +1,12 @@
 <template>
-  <div></div>
+  <CThemeProvider>
+    <nuxt-child />
+  </CThemeProvider>
 </template>
 
 <script>
 export default {
+  layout: 'home',
   middleware({
     store,
     redirect,

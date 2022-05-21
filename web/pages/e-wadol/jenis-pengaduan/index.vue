@@ -1,12 +1,11 @@
 <template>
   <div>
-    <nuxt-child />
+    Jenis Pengaduan
   </div>
 </template>
 
 <script>
 export default {
-  layout: 'home'
 
 }
 </script>

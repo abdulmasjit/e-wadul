@@ -53,11 +53,11 @@ class Repository {
       }
       if (e.response.status === 400) {
         data.error = true
-        data.message = `${e.response.data.header} ${e.response.data.detail}`
+        data.message = `${e.response.data.message}`
         data.code = (e.response) ? e.request.status : 400
       } else if (e.response.status === 401) {
         data.error = true
-        data.message = `${e.response.data.header} ${e.response.data.detail}`
+        data.message = `${e.response.data.message}`
         data.code = (e.response) ? e.request.status : 401
       } else {
         data.error = true

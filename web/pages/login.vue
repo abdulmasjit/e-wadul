@@ -74,24 +74,12 @@
 
 <script>
 import {
-  CInput,
-  CButton,
-  CInputRightElement,
-  CInputGroup
-} from '@chakra-ui/vue'
-import {
-  ValidationProvider
-} from 'vee-validate'
+  authUseCase
+} from '~/domain/usecase'
+import moment from 'moment'
 
 export default {
   name: 'LoginIndex',
-  components: {
-    CInput,
-    ValidationProvider,
-    CButton,
-    CInputRightElement,
-    CInputGroup
-  },
   data() {
     return {
       username: 'admin',
@@ -105,7 +93,23 @@ export default {
       this.show = !this.show
     },
     processSubmit() {
+      authUseCase.loginProcess(this.username, this.password).then(async (res) => {
+        console.log('apaka', res)
+        if (!res.error) {
+          await this.$store.dispatch('setAppActiveUser', res.result)
+          await this.$store.dispatch('setDateAuth', moment().format())
+          await this.$store.dispatch('setIsAuth', true)
+          window.location.href = '/e-wadol/dashboard'
+        } else {
+          this.$toast({
+            // title: 'Account created.',
+            description: res.message,
+            status: 'error',
+            duration: 3000
+          })
 
+        }
+      })
     },
     submit() {
       this.$refs.form.validate().then((success) => {

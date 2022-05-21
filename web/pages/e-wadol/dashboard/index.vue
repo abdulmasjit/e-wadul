@@ -1,14 +1,10 @@
 <template>
-  <div></div>
+  <div> Ini Dashboard</div>
 </template>
 
 <script>
 export default {
-  name: 'EwadolIndexPages',
   layout: 'home'
+
 }
 </script>
-
-<style>
-
-</style>

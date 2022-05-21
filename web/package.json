@@ -21,6 +21,7 @@
     "@nuxtjs/emotion": "^0.1.0",
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.19.3",
+    "moment": "^2.29.3",
     "nuxt": "^2.15.8",
     "secure-ls": "^1.2.6",
     "vee-validate": "^3.4.14",

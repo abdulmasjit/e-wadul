@@ -30,8 +30,8 @@ class Remote {
     this.header = header
     this.data = data
 
-    if (store.state.authenticated.isAuthen) {
-      this.header.authorization = `Bearer ${store.state.authenticated.accessToken}`
+    if (store.state.authenticated.isAuth) {
+      this.header.authorization = `Bearer ${store.state.appActiveUser.token}`
       this.header.timeout = 5000
     }
   }
