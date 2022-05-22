@@ -58,7 +58,7 @@
                   <c-button
                     variant-color="green"
                     class="rounded-full"
-                    type="submit">Button</c-button>
+                    type="submit">Masuk</c-button>
                 </div>
                 <div class="mt-10">
                   <p class="text-center text-sm">Don't have an account? <b class="cursor-pointer">Sign Up</b></p>

@@ -31,7 +31,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/vee-validate.ts',
-    '~/plugins/chakra-ui.ts'
+    '~/plugins/chakra-ui.ts',
+    '~/plugins/dev-extreme.ts'
     // '~/plugins/fontawesome.js',
   ],
 
@@ -64,7 +65,14 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    'vue-sweetalert2/nuxt'
   ],
+  sweetalert: {
+    confirmButtonColor: '#029141',
+    cancelButtonColor: '#CB0000',
+    confirmButtonText: 'Ok',
+    cancelButtonText: 'Batal'
+  },
 
   // chakra: {
   //   extendTheme: customTheme
@@ -90,6 +98,10 @@ export default {
   // Base router configuration: https://nuxtjs.org/docs/configuration-glossary/configuration-router/
   router: {
     base: '/',
+  },
+
+  loading: {
+    color: '#029141'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

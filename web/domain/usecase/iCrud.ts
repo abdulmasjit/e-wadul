@@ -5,5 +5,4 @@ export default interface ICrud {
   getDataForm(id: any): Promise<any>
   submitData(id: any, data: any): Promise<Response>
   deleteData(id: any): Promise<Response>
-  changeIsActive(id: any, data: any): Promise<Response>
 }

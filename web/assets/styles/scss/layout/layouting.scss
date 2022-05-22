@@ -101,13 +101,23 @@
   SETTING LEFT PANEL
 ===============================*/
 
-.css-19oe1nf-className {
-  background: none !important;
-}
+// .css-19oe1nf-className {
+//   background: none !important;
+// }
 
-.css-1rbr9xh-className {
-  width: $width-leftmenu;
+// .css-1rbr9xh-className {
+//   width: $width-leftmenu;
+//   background: $green-primary;
+// }
+
+.left-panel {
   background: $green-primary;
+  width: $width-leftmenu;
+  height: 100%;
+  position: fixed;
+  box-shadow: 2px 0px 32px rgba(0, 0, 0, 0.08);
+  overflow-y: auto;
+  transition: width 0.5s ease-in-out;
 }
 
 .body-left-panel {
@@ -127,7 +137,8 @@
       font-weight: 600;
     }
   }
-  .container-title:hover, .container-title.active{
+  .container-title:hover,
+  .container-title.active {
     background: $green-tertiary;
   }
   // .title:hover
@@ -173,11 +184,11 @@
     margin-left: 0;
   }
 
-  .left-panel {
-    // width: 0;
-    position: fixed;
-    width: 300px;
-  }
+  // .left-panel {
+  //   // width: 0;
+  //   position: fixed;
+  //   width: 300px;
+  // }
 
   .layout-topbar.active {
     left: 0;

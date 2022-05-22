@@ -5,18 +5,48 @@ import Chakra, {
   CInput,
   CButton,
   CInputRightElement,
-  CInputGroup
+  CInputGroup,
+  CAvatar,
+  CAvatarBadge,
+  CTooltip,
+  CIcon,
+  CModal,
+  CModalOverlay,
+  CModalContent,
+  CModalHeader,
+  CModalFooter,
+  CModalBody,
+  CModalCloseButton
 } from '@chakra-ui/vue'
+import { faTrash, faPen } from '@fortawesome/free-solid-svg-icons'
 
 Vue.use(Chakra, {
-  extendTheme: customTheme
+  extendTheme: customTheme,
+  icons: {
+    iconPack: 'fa',
+    iconSet: {
+      faPen,
+      faTrash
+    }
+  }
 })
 const components = {
   CThemeProvider,
   CButton,
   CInput,
   CInputRightElement,
-  CInputGroup
+  CInputGroup,
+  CAvatar,
+  CAvatarBadge,
+  CTooltip,
+  CIcon,
+  CModal,
+  CModalOverlay,
+  CModalContent,
+  CModalHeader,
+  CModalFooter,
+  CModalBody,
+  CModalCloseButton
 }
 
 Object.entries(components).forEach(([name, component]) => {

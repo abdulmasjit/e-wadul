@@ -4,6 +4,7 @@ export default {
   },
   colors: {
     primary: '#029141',
-    secondary: '#5FB584'
+    secondary: '#5FB584',
+    // green: '#029141'
   },
 }
