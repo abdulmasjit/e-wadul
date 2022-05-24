@@ -28,12 +28,4 @@ public class AuthController : ControllerBase
 
         return Ok(response);
     }
-
-    // [Authorize]
-    // [HttpGet]
-    // public IActionResult GetAll()
-    // {
-    //     var users = _authService.GetAll();
-    //     return Ok(users);
-    // }
 }
