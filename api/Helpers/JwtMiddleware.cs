@@ -1,3 +1,4 @@
+// #nullable disable
 namespace Ewadul.Api.Helpers;
 
 using Microsoft.Extensions.Options;
