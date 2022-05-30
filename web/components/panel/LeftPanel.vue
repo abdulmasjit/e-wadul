@@ -1,18 +1,22 @@
 <template>
   <div id="admin-left-panel" class="container-left-panel">
-    <c-drawer :placement="placement" :isOpen="isOpen" class="left-panel">
+    <!-- <c-drawer
+   :placement="placement"
+   :isOpen="isOpen"
+   class="left-panel">
       <c-drawer-overlay />
       <c-drawer-content>
-        <!-- <c-drawer-header borderBottomWidth="1px" class="header-left-panel">Basic Drawer</c-drawer-header> -->
         <div class="body-left-panel">
-          <!-- <div class=" bg-red-300 mt-28">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div> -->
           <LeftPanelContent />
-          <!-- <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p> -->
         </div>
       </c-drawer-content>
-    </c-drawer>
+    </c-drawer> -->
+    <div class="left-panel lg:block md:hidden hidden">
+      aaaaaaaaaaa
+      <div class="body-left-panel">
+        <LeftPanelContent />
+      </div>
+    </div>
   </div>
 </template>
 

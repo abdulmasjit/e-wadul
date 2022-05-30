@@ -1,11 +1,13 @@
 <template>
-  <div></div>
+  <div>
+    <nuxt-child />
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'EwadolIndexPages',
   layout: 'home'
+
 }
 </script>
 

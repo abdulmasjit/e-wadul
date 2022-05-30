@@ -1,8 +1,9 @@
 import Vue from 'vue';
-import { ValidationProvider, extend } from 'vee-validate';
+import { ValidationProvider, extend, ValidationObserver } from 'vee-validate';
 import {
   required,
-  email
+  email,
+  min
 } from 'vee-validate/dist/rules';
 
 
@@ -10,11 +11,18 @@ extend('required', {
   ...required,
   message: '{_field_} harus diisi'
 });
-// Add a rule.
-// extend('secret', {
-//   validate: value => value === 'example',
-//   message: 'This is not the magic word'
-// });
+
+extend('email', {
+  ...email,
+  message: '{_field_} tidak valid'
+});
+
+extend('min', {
+  ...min,
+  params: ['length'],
+  message: '{_field_} minimal mengandung {length} karakter'
+});
 
 // Register it globally
 Vue.component('ValidationProvider', ValidationProvider);
+Vue.component('ValidationObserver', ValidationObserver)

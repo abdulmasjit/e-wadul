@@ -1,15 +1,23 @@
 <template>
-
+  <CThemeProvider>
+    <nuxt-child />
+  </CThemeProvider>
 </template>
 
 <script>
 export default {
+  layout: 'home',
   middleware({
     store,
-    redirect
+    redirect,
+    route
   }) {
-    // If the user is not authenticated
-    return redirect('/login')
+    // console.log('ini route', route)
+    if (route.name === 'index') {
+      redirect({
+        name: 'login'
+      })
+    }
   }
 }
 </script>

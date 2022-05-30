@@ -5,14 +5,8 @@
 </template>
 
 <script>
-import {
-  CThemeProvider
-} from '@chakra-ui/vue'
 export default {
   name: 'DefaultLayout',
-  components: {
-    CThemeProvider
-  }
 }
 </script>
 

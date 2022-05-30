@@ -1,7 +1,14 @@
+import customTheme from './custom-theme'
+
 export default {
   // Mode configuration : https://nuxtjs.org/docs/configuration-glossary/configuration-mode
-  // mode: 'spa',
   ssr: false,
+
+  // https://nuxtjs.org/docs/configuration-glossary/configuration-env/
+  env: {
+    apiUrl: process.env.API_URL || 'http://localhost:5000/api/v1/'
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'E - Wadul',
@@ -24,6 +31,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/vee-validate.ts',
+    '~/plugins/chakra-ui.ts',
+    '~/plugins/dev-extreme.ts'
     // '~/plugins/fontawesome.js',
   ],
 
@@ -56,15 +65,18 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    'vue-sweetalert2/nuxt'
   ],
-
-  chakra: {
-    extendTheme: {
-      colors: {
-        brand: { /* ... */ }
-      }
-    }
+  sweetalert: {
+    confirmButtonColor: '#029141',
+    cancelButtonColor: '#CB0000',
+    confirmButtonText: 'Ok',
+    cancelButtonText: 'Batal'
   },
+
+  // chakra: {
+  //   extendTheme: customTheme
+  // },
 
   purgeCSS: {
     whitelistPatterns: [/svg.*/, /fa.*/]
@@ -86,6 +98,10 @@ export default {
   // Base router configuration: https://nuxtjs.org/docs/configuration-glossary/configuration-router/
   router: {
     base: '/',
+  },
+
+  loading: {
+    color: '#029141'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
