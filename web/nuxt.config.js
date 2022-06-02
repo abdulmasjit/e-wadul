@@ -6,7 +6,8 @@ export default {
 
   // https://nuxtjs.org/docs/configuration-glossary/configuration-env/
   env: {
-    apiUrl: process.env.API_URL || 'http://localhost:5000/api/v1/'
+    apiUrl: process.env.API_URL || 'http://localhost:5000/api/v1/',
+    googleApiKey: process.env.GOOGLE_API_KEY
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -20,7 +21,7 @@ export default {
     ],
     src: [
       {
-        src: `https://maps.googleapis.com/maps/api/js?key=AIzaSyA4AaXb62jV5KSJG3jVO9-6mexASBMXEVk&callback=initMap&v=weekly`,
+        src: `https://maps.googleapis.com/maps/api/js?key=${process.env.googleApiKey}&callback=initMap&v=weekly`,
         async: true,
         defer: true
       }

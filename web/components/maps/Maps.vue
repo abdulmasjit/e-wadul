@@ -25,10 +25,9 @@
 import {
   Loader
 } from '@googlemaps/js-api-loader'
-import * as VueGoogleMaps from 'vue2-google-maps'
 
 const loader = new Loader({
-  apiKey: 'AIzaSyA4AaXb62jV5KSJG3jVO9-6mexASBMXEVk',
+  apiKey: process.env.googleApiKey,
   version: 'weekly',
   libraries: ['places']
 });
