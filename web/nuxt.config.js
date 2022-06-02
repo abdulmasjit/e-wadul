@@ -40,6 +40,7 @@ export default {
     '~/plugins/vee-validate.ts',
     '~/plugins/chakra-ui.ts',
     '~/plugins/dev-extreme.ts',
+    '~/plugins/vue-geolocation.ts'
     // '~/plugins/fontawesome.js',
   ],
 
