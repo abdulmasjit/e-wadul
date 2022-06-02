@@ -18,6 +18,13 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
+    src: [
+      {
+        src: `https://maps.googleapis.com/maps/api/js?key=AIzaSyA4AaXb62jV5KSJG3jVO9-6mexASBMXEVk&callback=initMap&v=weekly`,
+        async: true,
+        defer: true
+      }
+    ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
@@ -32,7 +39,7 @@ export default {
   plugins: [
     '~/plugins/vee-validate.ts',
     '~/plugins/chakra-ui.ts',
-    '~/plugins/dev-extreme.ts'
+    '~/plugins/dev-extreme.ts',
     // '~/plugins/fontawesome.js',
   ],
 
@@ -65,7 +72,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    'vue-sweetalert2/nuxt'
+    'vue-sweetalert2/nuxt',
   ],
   sweetalert: {
     confirmButtonColor: '#029141',
@@ -107,7 +114,7 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: [
-      'vee-validate/dist/rules'
+      'vee-validate/dist/rules',
     ],
     postcss: {
       plugins: {
