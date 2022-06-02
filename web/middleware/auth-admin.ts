@@ -1,7 +1,7 @@
 import moment from 'moment'
 
 export default (context: any) => {
-  console.log('any authicanted-context', context)
+  // console.log('any authicanted-context', context)
   const checkDateExpired = () => {
     if (context.store.state.authenticated.dateLogin && context.store.state.appActiveUser.token) {
       const dateLogin = moment(context.store.state.authenticated.dateLogin)

@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  layout: 'home'
+  name: 'UserPages'
 }
 </script>
 

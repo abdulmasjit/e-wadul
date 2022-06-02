@@ -6,7 +6,8 @@ export default {
 
   // https://nuxtjs.org/docs/configuration-glossary/configuration-env/
   env: {
-    apiUrl: process.env.API_URL || 'http://localhost:5000/api/v1/'
+    apiUrl: process.env.API_URL || 'http://localhost:5000/api/v1/',
+    googleApiKey: process.env.GOOGLE_API_KEY
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -17,6 +18,13 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
+    ],
+    src: [
+      {
+        src: `https://maps.googleapis.com/maps/api/js?key=${process.env.googleApiKey}&callback=initMap&v=weekly`,
+        async: true,
+        defer: true
+      }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
@@ -32,7 +40,8 @@ export default {
   plugins: [
     '~/plugins/vee-validate.ts',
     '~/plugins/chakra-ui.ts',
-    '~/plugins/dev-extreme.ts'
+    '~/plugins/dev-extreme.ts',
+    '~/plugins/vue-geolocation.ts'
     // '~/plugins/fontawesome.js',
   ],
 
@@ -65,7 +74,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    'vue-sweetalert2/nuxt'
+    'vue-sweetalert2/nuxt',
   ],
   sweetalert: {
     confirmButtonColor: '#029141',
@@ -107,7 +116,7 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: [
-      'vee-validate/dist/rules'
+      'vee-validate/dist/rules',
     ],
     postcss: {
       plugins: {

@@ -1,19 +1,18 @@
 <template>
-  <div>
-    Pengaduan
+  <div>Pengaduan
+    <Maps />
   </div>
 </template>
 
 <script>
+import Maps from '~/components/maps/Maps.vue'
 export default {
-  layout: 'home',
-  data() {
-    return {
-      menus: [{
-        title: 'Pengaduan',
-        route: 'pengaduan'
-      }]
-    }
+  components: {
+    Maps
   }
 }
 </script>
+
+<style>
+
+</style>

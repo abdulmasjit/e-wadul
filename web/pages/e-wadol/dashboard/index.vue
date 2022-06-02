@@ -4,7 +4,6 @@
 
 <script>
 export default {
-  layout: 'home'
-
+  name: 'DashboardPages'
 }
 </script>
