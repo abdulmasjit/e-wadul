@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import 'devextreme/dist/css/dx.common.css'
-// import 'devextreme/dist/css/dx.light.css'
-import 'devextreme/dist/css/dx.greenmist.css'
+import 'devextreme/dist/css/dx.light.css'
+// import 'devextreme/dist/css/dx.greenmist.css'
 // import 'devextreme/dist/css/dx.greenmist.compact.css'
 import {
   DxDataGrid,
@@ -15,9 +15,9 @@ import {
   DxHeaderFilter,
   DxFilterRow,
   DxExport,
-  DxPager,
-  DxLoadPanel
+  DxPager
 } from 'devextreme-vue/data-grid'
+import { DxLoadPanel } from 'devextreme-vue/load-panel'
 
 const components = {
   DxDataGrid,

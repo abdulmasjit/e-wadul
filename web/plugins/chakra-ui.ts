@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import customTheme from '~/custom-theme'
+// import 'animate.css'
 import Chakra, {
   CThemeProvider,
   CInput,
@@ -16,7 +17,28 @@ import Chakra, {
   CModalHeader,
   CModalFooter,
   CModalBody,
-  CModalCloseButton
+  CModalCloseButton,
+  CTextarea,
+  CBreadcrumb,
+  CBreadcrumbItem,
+  CBreadcrumbLink,
+  CBreadcrumbSeparator,
+  CMenu,
+  CMenuButton,
+  CMenuList,
+  CMenuItem,
+  CMenuGroup,
+  CMenuDivider,
+  CMenuOptionGroup,
+  CMenuItemOption,
+  CPopover,
+  CPopoverTrigger,
+  CPopoverContent,
+  CPopoverHeader,
+  CPopoverBody,
+  CPopoverFooter,
+  CPopoverArrow,
+  CPopoverCloseButton
 } from '@chakra-ui/vue'
 import { faTrash, faPen } from '@fortawesome/free-solid-svg-icons'
 
@@ -46,7 +68,28 @@ const components = {
   CModalHeader,
   CModalFooter,
   CModalBody,
-  CModalCloseButton
+  CModalCloseButton,
+  CTextarea,
+  CBreadcrumb,
+  CBreadcrumbItem,
+  CBreadcrumbLink,
+  CBreadcrumbSeparator,
+  CMenu,
+  CMenuButton,
+  CMenuList,
+  CMenuItem,
+  CMenuGroup,
+  CMenuDivider,
+  CMenuOptionGroup,
+  CMenuItemOption,
+  CPopover,
+  CPopoverTrigger,
+  CPopoverContent,
+  CPopoverHeader,
+  CPopoverBody,
+  CPopoverFooter,
+  CPopoverArrow,
+  CPopoverCloseButton
 }
 
 Object.entries(components).forEach(([name, component]) => {

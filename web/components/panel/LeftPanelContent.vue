@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     classContainerTitle(val) {
-      if (val.routeName === this.$route.name) {
+      if (this.$route.name.includes(val.routeName)) {
         return 'container-title active'
       }
       return 'container-title'

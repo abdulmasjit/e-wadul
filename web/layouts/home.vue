@@ -4,7 +4,12 @@
       <HeaderPanel />
       <LeftPanel class="index-left-panel" />
       <div class="layout-main active">
-        <Nuxt />
+        <transition
+          name="cust"
+          enter-active-class="animate__animated animate__delay-1s animate__fast animate__fadeInRight"
+          leave-active-class="animate__animated animate__fadeOutRight animate__faster">
+          <Nuxt />
+        </transition>
       </div>
     </main>
   </CThemeProvider>

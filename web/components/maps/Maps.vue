@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div>
-      {{selectedLocation}}
-    </div>
     <div
       id="mapDiv"
       ref="mapDiv"
-      style="width: 100%; height: 300px" />
-    <div id="desckriptionEl" ref="desckriptionEl">
+      class="mapDiv" />
+    <div
+      id="desckriptionEl"
+      ref="desckriptionEl"
+      v-show="lat && lng">
       {{selectedLocation}}
       <br>
       <div class=" mt-2 p-0.5 bg-yellow-500 rounded-2">Simpan</div>
@@ -15,8 +15,10 @@
     <c-input
       type="text"
       id="pac-input"
-      class="input-primary w-full"
+      class="input-primary mt-1"
+      style="width: 400px"
       v-model="selectedLocation"
+      v-if="isSearch"
       placeholder="Cari Lokasi" />
   </div>
 </template>
@@ -36,6 +38,18 @@ let map
 
 export default {
   name: 'Maps',
+  props: {
+    isSearch: {
+      default: () => null
+    },
+    isSaveMarkers: {
+      default: () => false
+    },
+    dataMaps: {
+      default: () => []
+    }
+  },
+  emits: ['sendData'],
   data() {
     return {
       map: '',
@@ -44,11 +58,15 @@ export default {
       icon: '',
       selectedLocation: '',
       markers: [],
+      marker1: null,
       lat: '',
-      lng: ''
+      lng: '',
+      geocoder: null
     }
   },
   mounted() {
+    console.log('gak rugi', this.isSearch)
+    console.log('maps', this.dataMaps)
     this.$getLocation({
       enableHighAccuracy: true, //defaults to false
       timeout: Infinity, //defaults to Infinit
@@ -60,6 +78,7 @@ export default {
 
   methods: {
     clearMarker() {
+      console.log('clearmarker', this.markers)
       this.markers.forEach(marker => {
         marker.setMap(null);
       });
@@ -82,7 +101,7 @@ export default {
       this.selectedLocation = address
       this.lat = latLangData.lat()
       this.lng = latLangData.lng()
-      this.infoWindow.setContent(`${address}, {lat: ${this.lat}, lng: ${this.lng}}`)
+      this.infoWindow.setContent(`${address}`)
       this.infoWindow.open(map, marker)
     },
 
@@ -92,8 +111,9 @@ export default {
         icon: this.icon,
         title: placeInfo.name,
         position: placeInfo.location
-      });
+      })
       this.markers.push(marker);
+      console.log('any markers', this.markers)
       return marker;
     },
 
@@ -116,117 +136,180 @@ export default {
     },
 
     geocodeLatLngAndMarkPan(latlng, geocoder) {
-      geocoder.geocode({
+      console.log('geocoder', geocoder)
+      console.log('data ltlng', latlng.lng())
+
+      this.geocoder.geocode({
           location: latlng
         })
         .then((response) => {
+          console.log('ok result', response)
           if (response.results[0]) {
-            this.map.setZoom(15);
-            const marker = createMarker(map, {
-              name: "test potision",
-              location: latlng
+            this.map.setZoom(15)
+            this.marker1 = new google.maps.Marker({
+              map: this.map,
+              icon: this.icon,
+              // title: placeInfo.name,
+              position: latlng
             })
-            this.infoWindowRestartNew(latlng, marker, `${response.results[0].formatted_address}`)
+            this.lat = latlng.lat()
+            this.lng = latlng.lng()
+            // const marker = createMarker(map, {
+            //   name: "test potision",
+            //   location: latlng
+            // })
+            this.infoWindowRestartNew(latlng, this.marker1, `${response.results[0].formatted_address}`)
           } else {
             window.alert("No results found");
           }
         })
-        .catch((e) => window.alert("Geocoder failed due to: " + e));
+        .catch((e) => console.log("Geocoder failed due to: " + e));
     },
     initMap() {
       loader.load().then(() => {
         this.icon = {
           url: "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/geocode-71.png",
-          size: new google.maps.Size(30, 30),
-          origin: new google.maps.Point(0, 0),
-          anchor: new google.maps.Point(17, 34),
+          // size: new google.maps.Size(30, 30),
+          // origin: new google.maps.Point(0, 0),
+          // anchor: new google.maps.Point(17, 34),
           scaledSize: new google.maps.Size(25, 25)
         }
+        this.geocoder = new google.maps.Geocoder()
         this.map = new google.maps.Map(document.getElementById('mapDiv'), {
           center: {
             lat: this.currentLocation.lat,
             lng: this.currentLocation.lng
           },
-          zoom: 10,
+          zoom: 15,
         })
-        this.markers = new google.maps.Marker({
-          position: {
-            lat: this.currentLocation.lat,
-            lng: this.currentLocation.lng
-          },
-          map: this.map
-        })
+        if (this.dataMaps.length > 0) {
+          if (this.dataMaps.length > 1) {
+            this.map.setZoom(8)
+          }
+          for (let i = 0; i < this.dataMaps.length; i++) {
+            this.createMarker(this.map, {
+              location: {
+                lat: this.dataMaps[i].lat,
+                lng: this.dataMaps[i].lng
+              },
+              name: this.dataMaps[i].name
+            })
+          }
+        }
+
         this.infoWindow = new google.maps.InfoWindow({
           content: "Lokasi Anda",
-          position: {
-            lat: this.currentLocation.lat,
-            lng: this.currentLocation.lng
-          }
-        })
-        const centerControlDiv = document.createElement("div");
-        this.CenterControl(centerControlDiv, map);
-        this.map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(centerControlDiv);
-
-        this.map.addListener("click", (mapsMouseEvent) => {
-          this.clearMarker();
-          console.log("markers", markers)
-          this.geocodeLatLngAndMarkPan(mapsMouseEvent.latLng, geocoder)
+          // position: {
+          //   lat: this.currentLocation.lat,
+          //   lng: this.currentLocation.lng
+          // }
         })
 
-        const input = document.getElementById("pac-input")
-        const searchBox = new google.maps.places.SearchBox(input)
+        // this.map.addListener('click', (mapsMouseEvent) => {
+        //   this.clearMarker()
+        //   // console.log("map", this.map)
+        //   // console.log('mapsssss', mapsMouseEvent)
+        //   this.geocodeLatLngAndMarkPan(mapsMouseEvent.latLng, this.geocoder)
+        // });
+        if (this.isSearch == true) {
+          this.marker1 = new google.maps.Marker({
+            map: this.map,
+            // draggable: true,
+            position: {
+              lat: this.currentLocation.lat,
+              lng: this.currentLocation.lng
+            },
+          })
+          const input = document.getElementById('pac-input')
+          const searchBox = new google.maps.places.SearchBox(input)
 
-        this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(input)
+          this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(input)
 
-        // Bias the SearchBox results towards current map's viewport.
-        this.map.addListener("bounds_changed", () => {
-          searchBox.setBounds(this.map.getBounds())
-        })
-
-        // Listen for the event fired when the user selects a prediction and retrieve
-        // more details for that place.
-        searchBox.addListener("places_changed", () => {
-          console.log("places_changed searchBox.getPlaces()", searchBox.getPlaces())
-          const places = searchBox.getPlaces()
-
-          if (places.length == 0) {
-            return
-          }
-
-          this.clearMarker()
-
-          // For each place, get the icon, name and location.
-          const bounds = new google.maps.LatLngBounds()
-
-          places.forEach((place) => {
-
-            if (!place.geometry || !place.geometry.location) {
-              console.log("Returned place contains no geometry")
-              return
-            }
-            // let marker = createMarker(map, {title: place.name, position: place.geometry.location })
-            geocodeLatLngAndMarkPan(place.geometry.location, geocoder)
-
-            if (place.geometry.viewport) {
-              bounds.union(place.geometry.viewport)
-            } else {
-              bounds.extend(place.geometry.location)
-            }
+          // Bias the SearchBox results towards current map's viewport.
+          this.map.addListener('bounds_changed', () => {
+            searchBox.setBounds(this.map.getBounds())
           })
 
+          // Listen for the event fired when the user selects a prediction and retrieve
+          // more details for that place.
+          searchBox.addListener('places_changed', () => {
+            console.log('places_changed searchBox.getPlaces()', searchBox.getPlaces())
+            const places = searchBox.getPlaces()
+            const centerControlDiv = document.createElement('div');
+            this.CenterControl(centerControlDiv, map);
+            this.map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(centerControlDiv)
+            if (places.length == 0) {
+              return
+            }
+
+            //   this.clearMarker()
+
+            //   // For each place, get the icon, name and location.
+
+            places.forEach((place) => {
+
+              if (!place.geometry || !place.geometry.location) {
+                console.log('Returned place contains no geometry')
+                return
+              }
+              // let marker = createMarker(map, {title: place.name, position: place.geometry.location })
+              this.geocodeLatLngAndMarkPan(place.geometry.location, this.geocoder)
+
+              if (place.geometry.viewport) {
+                bounds.union(place.geometry.viewport)
+              } else {
+                bounds.extend(place.geometry.location)
+              }
+            })
+
+          })
+          const bounds = new google.maps.LatLngBounds(
+            this.marker1.getPosition()
+          )
           this.map.fitBounds(bounds)
-        })
+
+        } else {
+          for (let i = 0; i < this.markers.length; i++) {
+            this.markers[i].addListener('click', (res) => {
+              console.log('respone click', res)
+              this.map.setZoom(20);
+              this.map.setCenter(res.latLng)
+            })
+          }
+        }
+        // google.maps.event.addListener(this.marker1, 'position_changed', this.update)
+        // this.marker1.addListener('click', (res) => {
+        //   console.log('ok response marker', res)
+        //   // this.infoWindowRestartNew(res.latLng)
+        //   this.infoWindow.open({
+        //     anchor: this.marker1,
+        //     map: this.map,
+        //     shouldFocus: false,
+        //   })
+        // })
       })
+    },
+    update() {
+      const path = [this.marker1.getPosition()];
+      setTimeout(this.geocodeLatLngAndMarkPan(new google.maps.LatLng(this.marker1.getPosition()), this.geocoder), 5000)
     },
     saveData() {
       // clearMarker()
       const res = {
-        selectedLocation: selectedLocation.value,
-        lat: lat.value,
-        lng: lng.value
+        location: this.selectedLocation,
+        lat: this.lat,
+        lng: this.lng
       }
-      this.$emit('sendData', JSON.stringify(res))
+      this.$emit('sendData', res)
     }
   }
 };
 </script>
+
+<style lang="scss">
+.mapDiv {
+  min-width: 300px;
+  width: 100%;
+  min-height: 300px;
+}
+</style>

@@ -13,14 +13,92 @@
   color: $danger;
 }
 
-.dx-datagrid-header-panel, .dx-toolbar .dx-toolbar-items-container {
-  background: $color-background;
+// .table-default {
+//   .dx-datagrid-headers {
+//     color: black !important;
+//     font-weight: 600 !important;
+//     background-color: #e9ecef !important;
+//     padding-top: 0.5rem;
+//     padding-bottom: 0.5rem;
+//   }
+
+//   .dx-datagrid-headers .dx-datagrid-table .dx-row > td {
+//     border-bottom: none !important;
+//   }
+// }
+
+// .table-project {
+//   .dx-row.dx-header-row {
+//     color: black !important;
+//     font-weight: 600 !important;
+//     background-color: #e9ecef !important;
+//     // padding-top: 0.5rem;
+//     // padding-bottom: 0.5rem;
+//   }
+// }
+
+.dx-datagrid-header-panel,
+.dx-toolbar .dx-toolbar-items-container {
+  // background: $color-background;
+  background: transparent !important;
 }
 
 .dx-datagrid {
-  background-color: #FFFFFF !important;
+  background-color: #ffffff !important;
 }
 
 .dx-datagrid-headers {
   font-weight: 600 !important;
+  background-color: #e9ecef !important;
+}
+
+.card-def {
+  background: #ffffff;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+}
+
+textarea.input-primary {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  font-size: 1rem;
+  -webkit-padding-start: 1rem;
+  padding-inline-start: 1rem;
+  -webkit-padding-end: 1rem;
+  padding-inline-end: 1rem;
+  height: 2.5rem;
+  line-height: inherit;
+  border-radius: 6px !important;
+  border-width: 1px;
+  border-color: inherit;
+  background: inherit;
+  font-family: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 80px;
+}
+
+textarea.input-primary:focus {
+  border-color: $primary;
+  box-shadow: 0 0 0 1px $primary;
+}
+
+textarea.input-primary:hover {
+  border-color: #cbd5e0;
 }
