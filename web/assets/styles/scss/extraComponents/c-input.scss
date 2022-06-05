@@ -2,5 +2,6 @@
 
 .input-primary.css-195vtln-className:focus {
     border-color: $primary;
-    box-shadow: 0 0 0 1px $primary
+    box-shadow: 0 0 0 1px $primary;
+    border-radius: 6px !important;
 }

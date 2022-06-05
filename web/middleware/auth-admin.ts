@@ -23,6 +23,7 @@ export default (context: any) => {
     })
   }
   if (checkDateExpired() === false) {
+    context.store.dispatch('logoutAccount')
     context.redirect({
       name: 'login'
     })

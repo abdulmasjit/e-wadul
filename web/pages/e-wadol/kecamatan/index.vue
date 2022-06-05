@@ -1,12 +1,12 @@
 <template>
   <div class="card-def px-5 py-5">
     <div class="mb-3">
-      <c-button
+      <!-- <c-button
         variant-color="green"
         class="rounded-lg flex gap-2 items-center"
         variant="solid"
         @click="addNew()">
-        <font-awesome-icon :icon="['fas', 'plus']" class=" cursor-pointer" />Tambah</c-button>
+        <font-awesome-icon :icon="['fas', 'plus']" class=" cursor-pointer" />Tambah</c-button> -->
     </div>
     <DxDataGrid
       ref="refTableDeliveryItem"
@@ -32,28 +32,8 @@
         :show-navigation-buttons="true" />
       <DxColumn
         data-field="nama"
-        caption="Nama Jenis Pengaduan"
+        caption="Nama Kecamatan"
         :visible="true" />
-      <DxColumn
-        caption="Action"
-        :visible="true"
-        :min-width="100"
-        cell-template="actionTemplate"
-        alignment="left" />
-      <template #actionTemplate="{ data }">
-        <div class="flex gap-4">
-          <font-awesome-icon
-            :icon="['fas', 'pen-to-square']"
-            class=" text-green-500 text-lg cursor-pointer"
-            @click="edit(data.data)" />
-          <font-awesome-icon
-            :icon="['fas', 'trash-can']"
-            class=" text-red-500 text-lg cursor-pointer"
-            @click="deleteData(data.data)" />
-          <!-- {{data.data.StatusPengirimanId}} -->
-          <!-- <i class="pi pi-ellipsis-h text-base cursor-pointer text-black" aria:haspopup="true" aria-controls="overlay_panel"></i> -->
-        </div>
-      </template>
       <DxSearchPanel :visible="true" />
     </DxDataGrid>
     <DxLoadPanel
@@ -62,26 +42,16 @@
       :position="position"
       :shading="true"
       shading-color="rgba(0,0,0,0.4)" />
-    <FormJenisPengaduan
-      :isShow="isShowModal"
-      @closeModal="closeModal"
-      :data="dataForm"
-      @submitData="submit"
-      v-if="isShowModal" />
   </div>
 </template>
 
 <script>
 import {
-  jenisPengaduanUseCase
+  kecamatanUseCase
 } from '~/domain/usecase'
-import FormJenisPengaduan from '~/views/jenis-pengaduan/FormJenisPengaduan.vue'
 
 export default {
-  name: 'JenisPengaduanPages',
-  components: {
-    FormJenisPengaduan
-  },
+  name: 'KecamatanPages',
   data() {
     return {
       dataSource: [],
@@ -106,7 +76,7 @@ export default {
     },
     getAll() {
       this.loading = true
-      jenisPengaduanUseCase.getAll().then((res) => {
+      kecamatanUseCase.getAll().then((res) => {
         if (!res.error) {
           this.dataSource = res.result
         }
@@ -114,7 +84,7 @@ export default {
       })
     },
     processDelete(data) {
-      jenisPengaduanUseCase.deleteData(data.id).then((res) => {
+      kecamatanUseCase.deleteData(data.id).then((res) => {
         console.log('berhasil del', res)
         if (!res.error) {
           this.$toast({
@@ -151,7 +121,7 @@ export default {
       this.dataForm = data
     },
     submit(data) {
-      jenisPengaduanUseCase.submitData(data.id, {
+      kecamatanUseCase.submitData(data.id, {
         nama: data.nama
       }).then((res) => {
         if (!res.error) {

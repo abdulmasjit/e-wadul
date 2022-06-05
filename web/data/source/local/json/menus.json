@@ -1,11 +1,19 @@
 [
   {
+    "title": "Dashboard",
+    "routeName": "e-wadol-dashboard"
+  },
+  {
     "title": "User",
     "routeName": "e-wadol-user"
   },
   {
     "title": "Jenis Pengaduan",
     "routeName": "e-wadol-jenis-pengaduan"
+  },
+  {
+    "title": "Kecamatan",
+    "routeName": "e-wadol-kecamatan"
   },
   {
     "title": "Pengaduan",

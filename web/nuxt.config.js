@@ -33,6 +33,7 @@ export default {
   css: [
     '~/assets/styles/css/tailwind/tailwind.css',
     '~/assets/styles/scss/main.scss',
+    'animate.css/animate.compat.css'
     // '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
@@ -41,7 +42,8 @@ export default {
     '~/plugins/vee-validate.ts',
     '~/plugins/chakra-ui.ts',
     '~/plugins/dev-extreme.ts',
-    '~/plugins/vue-geolocation.ts'
+    '~/plugins/vue-geolocation.ts',
+    '~/plugins/vue-select.ts'
     // '~/plugins/fontawesome.js',
   ],
 
