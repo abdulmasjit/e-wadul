@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Ewadul.Api.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using WebApplication1.Models;
 
-namespace WebAPI.Models
+namespace WebApplication1.Models
 {
     public class AuthenticationContext : IdentityDbContext
     {
@@ -15,6 +10,6 @@ namespace WebAPI.Models
 
         }
 
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

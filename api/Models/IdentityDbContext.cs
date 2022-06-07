@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace WebAPI.Models
+namespace WebApplication1.Models
 {
     public class IdentityDbContext
     {
