@@ -1,14 +1,17 @@
-﻿
+﻿#nullable disable
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Ewadul.Api.Data;
 using Ewadul.Api.Models;
 using Ewadul.Api.DTO;
 using Ewadul.Api.Helpers;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using WebApplication1.DTO;
 
-namespace WebApplication1.Controllers
+namespace Ewadul.Api.Controllers
 {
     //setting nama route
     [Route("api/v1/userProfile")]
@@ -41,7 +44,7 @@ namespace WebApplication1.Controllers
             user.Nik = req.Nik;
             user.Telepon = req.Telepon;
             user.Alamat = req.Alamat;
-            user.Status = 1; //aktif 0 tidak aktif
+            user.Status = 1; //aktif 
 
             try
             {

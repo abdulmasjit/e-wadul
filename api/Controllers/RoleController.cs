@@ -6,7 +6,7 @@ using Ewadul.Api.Models;
 using Ewadul.Api.DTO;
 using Ewadul.Api.Helpers;
 
-namespace WebApplication1.Controllers
+namespace Ewadul.Api.Controllers
 {
     // Setting nama route
     [Route("api/v1/role")]

@@ -1,4 +1,4 @@
-﻿namespace WebApplication1.DTO
+﻿namespace Ewadul.Api.DTO
 {
     public class RequestUserProfile
     {
