@@ -5,6 +5,8 @@ using Ewadul.Api.Data;
 using Ewadul.Api.Models;
 using Ewadul.Api.DTO;
 using Ewadul.Api.Helpers;
+using System;
+using System.Collections.Generic;
 
 namespace Ewadul.Api.Controllers
 {

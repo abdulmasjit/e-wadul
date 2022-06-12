@@ -1,4 +1,7 @@
-﻿namespace Ewadul.Api.DTO
+﻿using System;
+using System.Collections.Generic;
+
+namespace Ewadul.Api.DTO
 {
     public class RequestUserProfile
     {
