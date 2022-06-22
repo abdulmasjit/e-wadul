@@ -25,4 +25,24 @@ public class AppHelper
         // Return the hexadecimal string.
         return sBuilder.ToString();
     }
+    public static string generateKode(string prefix)
+    {
+        var date = DateTime.Now;
+        //tahun
+        var year = date.ToString("yy");
+        //bulan
+        var month = date.ToString("MM");
+        //hari
+        var day = date.ToString("dd");
+        //jam
+        var hours = date.ToString("HH");
+        //menit
+        var minutes = date.ToString("mm");
+        //second
+        var seconds = date.ToString("ss");
+        //milisecond
+        var milis = date.ToString("fff");
+        var kode = prefix+year+month+day+hours+minutes+seconds+milis;
+        return kode;
+    }
 }

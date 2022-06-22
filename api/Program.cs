@@ -1,4 +1,6 @@
+using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Ewadul.Api.Data;
 using Ewadul.Api.Helpers;
 using Ewadul.Api.Services;
@@ -24,6 +26,7 @@ builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSet
 
 // configure DI for application services
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IPengaduanService, PengaduanService>();
 
 var app = builder.Build();
 
@@ -42,6 +45,13 @@ app.UseCors(builder =>
     .AllowAnyHeader();
 });
 // app.UseHttpsRedirection();
+
+app.UseStaticFiles();
+// app.UseStaticFiles(new StaticFileOptions()
+// {
+//     FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"assets\files")),
+//     RequestPath = new PathString("/assets/files")
+// });
 
 app.UseAuthorization();
 
