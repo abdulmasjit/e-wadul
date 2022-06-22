@@ -1,3 +1,5 @@
+#nullable disable
+
 namespace Ewadul.Api.Helpers;
 
 using Microsoft.AspNetCore.Mvc;
