@@ -1,4 +1,6 @@
 using System;
+using System.Web;
+using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,14 +32,14 @@ namespace Ewadul.Api.Controllers
 
         // GET: api/v1/pengaduan
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Pengaduan>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Pengaduan>>> GetAll([FromQuery] int? idUser)
         {
-            var response = _pengaduanService.GetAll();
+            
+            var response = _pengaduanService.GetAll(idUser);
             if (response == null)
                 return BadRequest(new { message = "Data tidak ditemukan" });
 
             return Ok(response);
-            // return await _context.Pengaduans.ToListAsync();
         }
 
         // GET: api/v1/pengaduan/5
@@ -136,7 +138,11 @@ namespace Ewadul.Api.Controllers
             _context.Pengaduans.Remove(pengaduan);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            var response = new {
+                success = true,
+                message = "Data berhasil dihapus",
+            };   
+            return Ok(response);
         }
 
         private bool PengaduanExists(int id)
@@ -179,5 +185,70 @@ namespace Ewadul.Api.Controllers
             };   
             return Ok(response);
         }
+
+        // GET: api/v1/pengaduan/foto/5
+        [HttpGet("foto/{idPengaduan}")]
+        public async Task<ActionResult> GetFotoByIdPengaduan(int idPengaduan)
+        {
+            var itemFoto = _context.PengaduanFotos.Where(e => e.IdPengaduan == idPengaduan)
+                .Select(e => new
+                {
+                    id = e.Id,
+                    idPengaduan = e.IdPengaduan,
+                    foto = e.Foto
+                }).ToList();
+            if (itemFoto == null)
+            {
+                return NotFound();
+            }
+
+            var response = new {
+                success = true,
+                data = itemFoto,
+            };   
+
+            return Ok(response);
+        }
+
+        // DELETE: api/v1/pengaduan/foto/5
+        [HttpDelete("foto/{id}")]
+        public async Task<IActionResult> DeleteFoto(int id)
+        {
+            var pengaduanFoto = await _context.PengaduanFotos.FindAsync(id);
+            if (pengaduanFoto == null)
+            {
+                return NotFound();
+            }
+
+            // Remove file exist
+            if(pengaduanFoto.Foto!=""){
+                try
+                {
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", pengaduanFoto.Foto);
+                    var stream = new FileStream(path, FileMode.Open);
+                    Console.WriteLine("path : " + path);
+
+                    FileInfo file = new FileInfo(path);  
+                    if (file.Exists)//check file exsit or not  
+                    {  
+                        file.Delete();  
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+
+            _context.PengaduanFotos.Remove(pengaduanFoto);
+            await _context.SaveChangesAsync();
+
+            var response = new {
+                success = true,
+                message = "Data foto berhasil dihapus",
+            };   
+            return Ok(response);
+        }
+
     }
 }
