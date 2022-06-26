@@ -180,5 +180,29 @@ namespace Ewadul.Api.Controllers
             };   
             return Ok(response);
         }
+
+        // GET: api/v1/pengaduan/foto/5
+        [HttpGet("foto/{idPengaduan}")]
+        public async Task<ActionResult> GetFotoByIdPengaduan(int idPengaduan)
+        {
+            var itemFoto = _context.PengaduanFotos.Where(e => e.IdPengaduan == idPengaduan)
+                .Select(e => new
+                {
+                    id = e.Id,
+                    idPengaduan = e.IdPengaduan,
+                    foto = e.Foto
+                }).ToList();
+            if (itemFoto == null)
+            {
+                return NotFound();
+            }
+
+            var response = new {
+                success = true,
+                data = itemFoto,
+            };   
+
+            return Ok(response);
+        }
     }
 }
