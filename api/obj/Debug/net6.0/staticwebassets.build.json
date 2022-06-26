@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HaVVoyT5FJKf9zWM/VTpk9SC+SsJQGo+v7qe6/2kkas=",
+  "Hash": "rRLosAxEOcLoWRJRmqw65BtEl9s+IVr23VHMKVZ5u8Q=",
   "Source": "WebApplication1",
   "BasePath": "_content/WebApplication1",
   "Mode": "Default",
@@ -32,23 +32,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/files/pengaduan/foto_pengaduan_220622120734288.png"
-    },
-    {
-      "Identity": "/home/masjit/development/dotnet/e-wadul/api/wwwroot/files/pengaduan/foto_pengaduan_220626140630807.png",
-      "SourceId": "WebApplication1",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/masjit/development/dotnet/e-wadul/api/wwwroot/",
-      "BasePath": "_content/WebApplication1",
-      "RelativePath": "files/pengaduan/foto_pengaduan_220626140630807.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/files/pengaduan/foto_pengaduan_220626140630807.png"
     }
   ]
 }
