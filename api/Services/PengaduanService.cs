@@ -7,7 +7,7 @@ using Ewadul.Api.DTO;
 using MySql.Data.MySqlClient;
 public interface IPengaduanService
 {
-    IEnumerable<PengaduanDTO.PengaduanResponse> GetAll();
+    IEnumerable<PengaduanDTO.PengaduanResponse> GetAll(int? idUser);
     // IEnumerable<PengaduanDTO.PengaduanResponse> GetFotoPengaduan();
 }
 
@@ -19,7 +19,7 @@ public class PengaduanService : IPengaduanService
     {
         configuration = config;
     }
-    public IEnumerable<PengaduanDTO.PengaduanResponse> GetAll()
+    public IEnumerable<PengaduanDTO.PengaduanResponse> GetAll(int? idUser)
     {
         IList<PengaduanDTO.PengaduanResponse> pengaduanList = new List<PengaduanDTO.PengaduanResponse>();
         // koneksi database
@@ -36,7 +36,18 @@ public class PengaduanService : IPengaduanService
             LEFT JOIN status_pengaduan sp ON p.status = sp.id
         ";
 
+        // get by id_user
+        if(idUser!=null){
+            q += " WHERE p.id_user = @idUser ";        
+        }
+
         MySqlCommand cmd = new MySqlCommand(q, conn);
+
+        // binding parameter
+        if(idUser!=null){
+            cmd.Parameters.AddWithValue("@idUser", idUser);
+        }
+
         MySqlDataReader dataReader = cmd.ExecuteReader();
         while (dataReader.Read()){
             PengaduanDTO.PengaduanResponse item = new PengaduanDTO.PengaduanResponse();

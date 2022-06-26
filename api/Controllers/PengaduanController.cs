@@ -30,9 +30,10 @@ namespace Ewadul.Api.Controllers
 
         // GET: api/v1/pengaduan
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Pengaduan>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Pengaduan>>> GetAll([FromQuery] int? idUser)
         {
-            var response = _pengaduanService.GetAll();
+            
+            var response = _pengaduanService.GetAll(idUser);
             if (response == null)
                 return BadRequest(new { message = "Data tidak ditemukan" });
 
